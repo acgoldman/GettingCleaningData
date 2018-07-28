@@ -4,12 +4,12 @@ Then, it merges and summarizes so that one has a data set showing the averages o
 The final data set created, all.data.smry contains the following fields:
 subject_id - an ID (integer) of each of the 30 people involved in the study
 activity - text name of the activity performed (e.g. WALKING_UPSTAIRS)
-mn.tBodyAcc_mean_X - The average of the average (over the time recorded) body acceleration in the X axis
-mn.tBodyAcc_mean_Y - The average of the average (over the time recorded) body acceleration in the Y axis
-mn.tBodyAcc_mean_Z - The average of the average (over the time recorded) body acceleration in the Z axis
-mn.tBodyAcc_std_X - The average of the standard deviation (over the time recorded) body acceleration in the X axis
-mn.tBodyAcc_std_Y - The average of the standard deviation (over the time recorded) body acceleration in the Y axis
-mn.tBodyAcc_std_Z - The average of the standard deviation (over the time recorded) body acceleration in the Z axis
+mn.TimeBodyAcc_mean_X - The average of the average (over the time recorded) body acceleration in the X axis
+mn.TimeBodyAcc_mean_Y - The average of the average (over the time recorded) body acceleration in the Y axis
+mn.TimeBodyAcc_mean_Z - The average of the average (over the time recorded) body acceleration in the Z axis
+mn.TimeBodyAcc_std_X - The average of the standard deviation (over the time recorded) body acceleration in the X axis
+mn.TimeBodyAcc_std_Y - The average of the standard deviation (over the time recorded) body acceleration in the Y axis
+mn.TimeBodyAcc_std_Z - The average of the standard deviation (over the time recorded) body acceleration in the Z axis
 
 The units are in the scale [-1,1] becauase they are normalized. 
 
