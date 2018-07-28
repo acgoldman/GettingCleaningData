@@ -30,6 +30,7 @@ trainset.2 <- cbind(subj_train,actvty_train[,2:8]) #link subject id to info
 all.data <- rbind(trainset.2,testset.2)
 ## clean col names
 names(all.data) <- gsub(")","",gsub("(","",names(all.data),fixed = T),fixed = T)
+names(all.data) <- gsub("^t","Time",names(all.data))
 names(all.data) <- gsub("-","_",names(all.data))
 
 ## Create summary data
