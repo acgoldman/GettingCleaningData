@@ -11,7 +11,15 @@ mn.tBodyAcc_std_X - The average of the standard deviation (over the time recorde
 mn.tBodyAcc_std_Y - The average of the standard deviation (over the time recorded) body acceleration in the Y axis
 mn.tBodyAcc_std_Z - The average of the standard deviation (over the time recorded) body acceleration in the Z axis
 
-The units are in the scale [-1,1] becauase they are normalized.
+The units are in the scale [-1,1] becauase they are normalized. 
+
+Steps performed:
+1. Load all relevent data from the text files available from https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+
+2. Assign column names
+3. Combine data horizontally to pair labels of subjects and activities with their names
+4. Clean column names to remove parenthesis and dashes
+5. Create a summary table with averages grouped by subject_id and activity
 
 
 License:
