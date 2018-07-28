@@ -11,7 +11,7 @@ mn.tBodyAcc_std_X - The average of the standard deviation (over the time recorde
 mn.tBodyAcc_std_Y - The average of the standard deviation (over the time recorded) body acceleration in the Y axis
 mn.tBodyAcc_std_Z - The average of the standard deviation (over the time recorded) body acceleration in the Z axis
 
-
+The units are in the scale [-1,1] becauase they are normalized.
 
 
 License:
