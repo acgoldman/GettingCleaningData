@@ -34,11 +34,11 @@ names(all.data) <- gsub("^t","Time",names(all.data))
 names(all.data) <- gsub("-","_",names(all.data))
 
 ## Create summary data
-all.data.smry <- all.data %>% group_by(Subject.id,activity) %>% summarize(mn.tBodyAcc_mean_X = mean(tBodyAcc_mean_X),
-                                                                          mn.tBodyAcc_mean_Y = mean(tBodyAcc_mean_Y),
-                                                                          mn.tBodyAcc_mean_Z = mean(tBodyAcc_mean_Z),
-                                                                          mn.tBodyAcc_std_X = mean(tBodyAcc_std_X),
-                                                                          mn.tBodyAcc_std_Y = mean(tBodyAcc_std_Y),
-                                                                          mn.tBodyAcc_std_Z = mean(tBodyAcc_std_Z))
+all.data.smry <- all.data %>% group_by(Subject.id,activity) %>% summarize(mn.TimeBodyAcc_mean_X = mean(tBodyAcc_mean_X),
+                                                                          mn.TimeBodyAcc_mean_Y = mean(tBodyAcc_mean_Y),
+                                                                          mn.TimeBodyAcc_mean_Z = mean(tBodyAcc_mean_Z),
+                                                                          mn.TimeBodyAcc_std_X = mean(tBodyAcc_std_X),
+                                                                          mn.TimeBodyAcc_std_Y = mean(tBodyAcc_std_Y),
+                                                                          mn.TimeBodyAcc_std_Z = mean(tBodyAcc_std_Z))
 
 write.table(all.data.smry,"summarized_output.txt",row.names = FALSE)
