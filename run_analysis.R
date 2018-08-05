@@ -10,22 +10,27 @@ trainset <- read.table("train/X_train.txt")
 trainlabs <- read.table("train/y_train.txt")
 subj_train <- read.table("train/subject_train.txt")
 subj_test <- read.table("test/subject_test.txt")
-features <- read.table("features.txt")
+features <- read.table("features.txt",sep="")
 
 ## Merge tables together horizontally and then vertically
 names(testlabs) <- "actvty_id"
 names(testset) <- features[,2] #Name cols of values with appropriate features
-testset.1 <- cbind(testlabs,testset[,1:6]) #First six columns includes mean and std dev for the three key features
+testset.mn <- select(data.frame(testset), contains('mean')) #meand
+testset.sd <- select(data.frame(testset), contains('std')) #std dev
+testset.1 <- cbind(testlabs,cbind(testset.mn,testset.sd)) #First six columns includes mean and std dev for the three key features
 names(subj_test) <- "Subject.id"
+
 actvty <- inner_join(activities,testset.1) #Join on actvty_id
-testset.2 <- cbind(subj_test,actvty[,2:8]) #link subject id to info 
+testset.2 <- cbind(subj_test,actvty) #link subject id to info 
 ## Now do same for training data
 names(trainlabs) <- "actvty_id"
 names(trainset) <- features[,2] #Name cols of values with appropriate features
-trainset.1 <- cbind(trainlabs,trainset[,1:6]) #First six columns includes mean and std dev for the three key features
+trainset.mn <- select(data.frame(trainset), contains('mean')) #meand
+trainset.sd <- select(data.frame(trainset), contains('std')) #std dev
+trainset.1 <- cbind(trainlabs,cbind(trainset.mn,trainset.sd)) #First six columns includes mean and std dev for the three key features
 names(subj_train) <- "Subject.id"
 actvty_train <- inner_join(activities,trainset.1) #Join on actvty_id
-trainset.2 <- cbind(subj_train,actvty_train[,2:8]) #link subject id to info 
+trainset.2 <- cbind(subj_train,actvty_train) #link subject id to info 
 ## vertically combine train set then test set together
 all.data <- rbind(trainset.2,testset.2)
 ## clean col names
@@ -34,11 +39,6 @@ names(all.data) <- gsub("^t","Time",names(all.data))
 names(all.data) <- gsub("-","_",names(all.data))
 
 ## Create summary data
-all.data.smry <- all.data %>% group_by(Subject.id,activity) %>% summarize(mn.TimeBodyAcc_mean_X = mean(tBodyAcc_mean_X),
-                                                                          mn.TimeBodyAcc_mean_Y = mean(tBodyAcc_mean_Y),
-                                                                          mn.TimeBodyAcc_mean_Z = mean(tBodyAcc_mean_Z),
-                                                                          mn.TimeBodyAcc_std_X = mean(tBodyAcc_std_X),
-                                                                          mn.TimeBodyAcc_std_Y = mean(tBodyAcc_std_Y),
-                                                                          mn.TimeBodyAcc_std_Z = mean(tBodyAcc_std_Z))
+all.data.smry <- all.data %>% group_by(Subject.id,activity) %>% summarise_all(mean)
 
 write.table(all.data.smry,"summarized_output.txt",row.names = FALSE)
